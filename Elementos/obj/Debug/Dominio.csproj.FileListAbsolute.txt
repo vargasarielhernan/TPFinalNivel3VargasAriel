@@ -1,0 +1,6 @@
+C:\Users\user\OneDrive\Escritorio\Prog\C#\TPFinalNivel3VargasAriel\Elementos\bin\Debug\Elementos.dll
+C:\Users\user\OneDrive\Escritorio\Prog\C#\TPFinalNivel3VargasAriel\Elementos\bin\Debug\Elementos.pdb
+C:\Users\user\OneDrive\Escritorio\Prog\C#\TPFinalNivel3VargasAriel\Elementos\obj\Debug\Dominio.csproj.AssemblyReference.cache
+C:\Users\user\OneDrive\Escritorio\Prog\C#\TPFinalNivel3VargasAriel\Elementos\obj\Debug\Dominio.csproj.CoreCompileInputs.cache
+C:\Users\user\OneDrive\Escritorio\Prog\C#\TPFinalNivel3VargasAriel\Elementos\obj\Debug\Elementos.dll
+C:\Users\user\OneDrive\Escritorio\Prog\C#\TPFinalNivel3VargasAriel\Elementos\obj\Debug\Elementos.pdb

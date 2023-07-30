@@ -1,0 +1,9 @@
+C:\Users\user\OneDrive\Escritorio\Prog\C#\TPFinalNivel3VargasAriel\negocio\obj\Debug\negocio.csproj.AssemblyReference.cache
+C:\Users\user\OneDrive\Escritorio\Prog\C#\TPFinalNivel3VargasAriel\negocio\obj\Debug\negocio.csproj.CoreCompileInputs.cache
+C:\Users\user\OneDrive\Escritorio\Prog\C#\TPFinalNivel3VargasAriel\negocio\bin\Debug\negocio.dll
+C:\Users\user\OneDrive\Escritorio\Prog\C#\TPFinalNivel3VargasAriel\negocio\bin\Debug\negocio.pdb
+C:\Users\user\OneDrive\Escritorio\Prog\C#\TPFinalNivel3VargasAriel\negocio\bin\Debug\Elementos.dll
+C:\Users\user\OneDrive\Escritorio\Prog\C#\TPFinalNivel3VargasAriel\negocio\bin\Debug\Elementos.pdb
+C:\Users\user\OneDrive\Escritorio\Prog\C#\TPFinalNivel3VargasAriel\negocio\obj\Debug\negocio.csproj.CopyComplete
+C:\Users\user\OneDrive\Escritorio\Prog\C#\TPFinalNivel3VargasAriel\negocio\obj\Debug\negocio.dll
+C:\Users\user\OneDrive\Escritorio\Prog\C#\TPFinalNivel3VargasAriel\negocio\obj\Debug\negocio.pdb
