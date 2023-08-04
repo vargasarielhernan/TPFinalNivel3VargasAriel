@@ -75,6 +75,34 @@ namespace negocio
                                 break;
                         }
                         break;
+                    case "Marca":
+                        switch (criterio)
+                        {
+                            case "Comienza con":
+                                consulta += "M.Descripcion like '" + filtro + "%'";
+                                break;
+                            case "Termina con":
+                                consulta += "M.Descripcion like '%" + filtro + "'";
+                                break;
+                            default:
+                                consulta += "M.Descripcion like '%" + filtro + "%'";
+                                break;
+                        }
+                        break;
+                    case "Categoria":
+                        switch (criterio)
+                        {
+                            case "Comienza con":
+                                consulta += "C.Descripcion like '" + filtro + "%'";
+                                break;
+                            case "Termina con":
+                                consulta += "C.Descripcion like '%" + filtro + "'";
+                                break;
+                            default:
+                                consulta += "C.Descripcion like '%" + filtro + "%'";
+                                break;
+                        }
+                        break;
                     case "Nombre":
                         switch (criterio)
                         {
@@ -109,7 +137,7 @@ namespace negocio
                             case "Mayor a":
                                 consulta += "Precio > " + filtro;
                                 break;
-                            case "Termina con":
+                            case "Menor a":
                                 consulta += "Precio < " + filtro;
                                 break;
                             default:

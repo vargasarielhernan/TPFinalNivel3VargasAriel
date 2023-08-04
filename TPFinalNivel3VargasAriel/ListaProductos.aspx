@@ -33,6 +33,7 @@
                             <asp:ListItem Text="Descripcion" />
                             <asp:ListItem Text="Marca" />
                             <asp:ListItem Text="Categoria" />
+                            <asp:ListItem Text="Precio" />
                         </asp:DropDownList>
                     </div>
                 </div>
