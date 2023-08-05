@@ -27,7 +27,7 @@
                 <div class="col-3">
                     <div class="mb-3">
                         <asp:Label Text="Campo" ID="lblCampo" runat="server" />
-                        <asp:DropDownList runat="server" AutoPostBack="true" CssClass="form-control" ID="ddlCampo" OnSelectedIndexChanged="ddlCampo_SelectedIndexChanged">
+                        <asp:DropDownList runat="server" AutoPostBack="true" CssClass="table" ID="ddlCampo" OnSelectedIndexChanged="ddlCampo_SelectedIndexChanged">
                             <asp:ListItem Text="Nombre" />
                             <asp:ListItem Text="Codigo" />
                             <asp:ListItem Text="Descripcion" />
@@ -58,18 +58,24 @@
                 </div>
             </div>
             <%} %>
-            <asp:GridView ID="dgvProductos" CssClass="table" AutoGenerateColumns="false" runat="server">
-                <Columns>
-                    <asp:BoundField HeaderText="Codigo" DataField="Codigo" />
-                    <asp:BoundField HeaderText="Nombre" DataField="Nombre" />
-                    <asp:BoundField HeaderText="Descripcion" DataField="Descripcion" />
-                    <asp:BoundField HeaderText="Marca" DataField="Marca.Descripcion" />
-                    <asp:BoundField HeaderText="Categoria" DataField="Categoria.Descripcion" />
-                    <asp:BoundField HeaderText="ImagenUrl" DataField="ImagenUrl" />
-                    <asp:BoundField HeaderText="Precio" DataField="Precio" />
-                </Columns>
-
-            </asp:GridView>
+            <div class="row">
+                <div class="col-4">
+                    <div class="mb-3">
+                        <asp:GridView ID="dgvProductos" CssClass="table" AutoGenerateColumns="false" runat="server">
+                            <Columns>
+                                <asp:BoundField HeaderText="Codigo" DataField="Codigo" />
+                                <asp:BoundField HeaderText="Nombre" DataField="Nombre" />
+                                <asp:BoundField HeaderText="Descripcion" DataField="Descripcion" />
+                                <asp:BoundField HeaderText="Marca" DataField="Marca.Descripcion" />
+                                <asp:BoundField HeaderText="Categoria" DataField="Categoria.Descripcion" />
+                                <asp:BoundField HeaderText="ImagenUrl" DataField="ImagenUrl" />
+                                <asp:BoundField HeaderText="Precio" DataField="Precio" />
+                            </Columns>
+                        </asp:GridView>
+                        <a class="btn btn-dark" href="FormularioArticulos.aspx">Agregar</a>
+                    </div>
+                </div>
+            </div>
         </ContentTemplate>
     </asp:UpdatePanel>
 
