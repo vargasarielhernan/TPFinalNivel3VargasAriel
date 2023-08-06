@@ -178,5 +178,27 @@ namespace negocio
                 throw ex;
             }
         }
+        public void agregar(Articulos nuevo)
+        {
+            try
+            {
+                AccesoDatos accesoDB = new AccesoDatos();
+                accesoDB.SetearProcedimiento("StoredAgregarArticulo");
+                accesoDB.SetParametro("@Codigo", nuevo.Codigo);
+                accesoDB.SetParametro("@Nombre", nuevo.Nombre);
+                accesoDB.SetParametro("@Descripcion", nuevo.Descripcion);
+                accesoDB.SetParametro("@imagen", nuevo.ImagenUrl);
+                accesoDB.SetParametro("@Categoria", nuevo.Categoria.Id);
+                accesoDB.SetParametro("@Precio", nuevo.Precio);
+                accesoDB.SetParametro("@Marca", nuevo.Marca.Id);
+                accesoDB.Runread();
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            
+        }
     }
 }

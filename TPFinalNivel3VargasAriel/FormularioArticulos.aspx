@@ -3,6 +3,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+    <asp:ScriptManager ID="ScriptManager" runat="server" />
     <div class="row">
         <div class="col-6">
             <div class="mb-3">
@@ -11,23 +12,42 @@
             </div>
             <div class="mb-3">
                 <label for="txtNombre" class="form-label">Nombre</label>
-                <asp:TextBox CssClass="form-control" ID="Nombre" runat="server" />
+                <asp:TextBox CssClass="form-control" ID="txtNombre" runat="server" />
             </div>
+             <div class="mb-3">
+                <label for="txtMarca" class="form-label">Categoria</label>
+                <asp:DropDownList runat="server" AutoPostBack="true" CssClass="form-select" ID="ddlMarca">
+                </asp:DropDownList>
+            </div>
+            <div class="mb-3">
+                <label for="txtCategoria" class="form-label">Categoria</label>
+                <asp:DropDownList runat="server" AutoPostBack="true" CssClass="form-select" ID="ddlCategoria">
+                </asp:DropDownList>
+            </div>
+             <div class="mb-3">
+                <label for="txtPrecio" class="form-label">Precio</label>
+                <asp:TextBox CssClass="form-control" ID="txtPrecio" runat="server" />
+            </div>
+            <div>
+                <div class="mb-3">
+                    <asp:Button Text="Agregar" CssClass="btn btn-primary" ID="btnagregar" OnClick="btnagregar_Click" runat="server" />
+                </div>
+            </div>
+        </div>
+        <div class="col-6">
             <div class="mb-3">
                 <label for="txtDescripcion" class="form-label">Descripcion</label>
                 <asp:TextBox CssClass="form-control" TextMode="MultiLine" ID="txtDescripcion" runat="server" />
             </div>
-            <div class="mb-3">
-                <label for="txturlImagen" class="form-label">Url Imagen</label>
-                <asp:TextBox CssClass="form-control" ID="txturlImagen" runat="server" />
-            </div>
-             <div class="mb-3">
-                <label for="txtMarca" class="form-label">Marca</label>
-                 <asp:DropDownList runat="server" AutoPostBack="true" CssClass="form-select" ID="ddlMarca">
-                     <asp:ListItem Text="text1" />
-                     <asp:ListItem Text="text2" />
-                 </asp:DropDownList>
-            </div>
+            <asp:UpdatePanel runat="server">
+                <ContentTemplate>
+                    <div class="mb-3">
+                        <label for="txturlImagen" class="form-label">Url Imagen</label>
+                        <asp:TextBox AutoPostBack="true" CssClass="form-control" ID="txturlImagen" runat="server" OnTextChanged="txturlImagen_TextChanged" />
+                    </div>
+                    <asp:Image ImageUrl="https://img.freepik.com/vector-premium/vector-icono-imagen-predeterminado-pagina-imagen-faltante-diseno-sitio-web-o-aplicacion-movil-no-hay-foto-disponible_87543-11093.jpg?w=740" runat="server" ID="ImagenUrl" Width="60%" />
+                </ContentTemplate>
+            </asp:UpdatePanel>
         </div>
     </div>
 </asp:Content>

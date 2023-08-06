@@ -29,6 +29,10 @@ namespace negocio
             Comando.CommandText = sp;
 
         }
+        public void SetParametro(string nombre, object valor)
+        {
+            Comando.Parameters.AddWithValue(nombre, valor);
+        }
         public void Runread()
         {
             Comando.Connection = Conexion;
