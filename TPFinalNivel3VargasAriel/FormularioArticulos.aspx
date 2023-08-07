@@ -30,7 +30,7 @@
             </div>
             <div>
                 <div class="mb-3">
-                    <asp:Button Text="Agregar" CssClass="btn btn-primary" ID="btnagregar" OnClick="btnagregar_Click" runat="server" />
+                    <asp:Button Text="Aceptar" CssClass="btn btn-primary" ID="btnagregar" OnClick="btnagregar_Click" runat="server" />
                 </div>
             </div>
         </div>

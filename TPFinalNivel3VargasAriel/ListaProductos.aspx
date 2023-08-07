@@ -61,15 +61,16 @@
             <div class="row">
                 <div class="col-4">
                     <div class="mb-3">
-                        <asp:GridView ID="dgvProductos" CssClass="table" AutoGenerateColumns="false" runat="server">
+                        <asp:GridView ID="dgvProductos" DataKeyNames="Id" OnSelectedIndexChanged="dgvProductos_SelectedIndexChanged" CssClass="table" AutoGenerateColumns="false" runat="server">
                             <Columns>
                                 <asp:BoundField HeaderText="Codigo" DataField="Codigo" />
                                 <asp:BoundField HeaderText="Nombre" DataField="Nombre" />
                                 <asp:BoundField HeaderText="Descripcion" DataField="Descripcion" />
                                 <asp:BoundField HeaderText="Marca" DataField="Marca.Descripcion" />
                                 <asp:BoundField HeaderText="Categoria" DataField="Categoria.Descripcion" />
-                                <asp:BoundField HeaderText="ImagenUrl" DataField="ImagenUrl" />
                                 <asp:BoundField HeaderText="Precio" DataField="Precio" />
+                                <asp:CommandField ShowSelectButton="true" SelectText="Editar" HeaderText="Acciones"/>
+                                <asp:BoundField HeaderText="ImagenUrl" DataField="ImagenUrl" />
                             </Columns>
                         </asp:GridView>
                         <a class="btn btn-dark" href="FormularioArticulos.aspx">Agregar</a>

@@ -200,5 +200,27 @@ namespace negocio
             }
             
         }
+        public void editar(Articulos nuevo)
+        {
+            try
+            {
+                AccesoDatos accesoDB = new AccesoDatos();
+                accesoDB.SetearProcedimiento("StoredEditarArticulo");
+                accesoDB.SetParametro("@Codigo", nuevo.Codigo);
+                accesoDB.SetParametro("@Nombre", nuevo.Nombre);
+                accesoDB.SetParametro("@Descripcion", nuevo.Descripcion);
+                accesoDB.SetParametro("@imagen", nuevo.ImagenUrl);
+                accesoDB.SetParametro("@Categoria", nuevo.Categoria.Id);
+                accesoDB.SetParametro("@Precio", nuevo.Precio);
+                accesoDB.SetParametro("@Marca", nuevo.Marca.Id);
+                accesoDB.SetParametro("@Id", nuevo.Id);
+                accesoDB.Runread();
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
     }
 }

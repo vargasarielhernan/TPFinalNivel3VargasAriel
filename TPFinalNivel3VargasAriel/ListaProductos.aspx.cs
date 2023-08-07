@@ -63,5 +63,11 @@ namespace TPFinalNivel3VargasAriel
                 throw;
             }
         }
+
+        protected void dgvProductos_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            var id =dgvProductos.SelectedDataKey.Value.ToString();
+            Response.Redirect("FormularioArticulos.aspx?Id=" + id);
+        }
     }
 }

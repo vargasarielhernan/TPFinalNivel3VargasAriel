@@ -6,6 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using negocio;
 using Dominio;
+using System.Collections;
 
 namespace TPFinalNivel3VargasAriel
 {
@@ -31,6 +32,41 @@ namespace TPFinalNivel3VargasAriel
                     ddlMarca.DataTextField = "Descripcion";
                     ddlMarca.DataBind();
                 }
+                if (Request.QueryString["id"]!=null && !IsPostBack)
+                {
+                    Articulos articulo = new Articulos();
+                    AccesoDatos accesoDB = new AccesoDatos();
+                    string id = Request.QueryString["id"].ToString();
+                    string consulta = "select A.Id, A.Codigo, A.Nombre, A.Descripcion, M.Descripcion as Marca, M.Id as IdMarca, C.Id as IdCategoria, C.Descripcion as Categoria, A.ImagenUrl, A.Precio from ARTICULOS A, MARCAS M, CATEGORIAS C where A.IdMarca= M.Id and A.IdCategoria=C.ID and A.Id=" + id;
+                    accesoDB.Setquery(consulta);
+                    accesoDB.Runread();
+                    while (accesoDB.Lector.Read())
+                    {
+                        Articulos aux = new Articulos();
+                        aux.Id = (int)accesoDB.Lector["Id"];
+                        aux.Codigo = (string)accesoDB.Lector["Codigo"];
+                        aux.Nombre = (string)accesoDB.Lector["Nombre"];
+                        aux.Descripcion = (string)accesoDB.Lector["Descripcion"];
+                        if (!(accesoDB.Lector["ImagenUrl"] is DBNull))
+                            aux.ImagenUrl = (string)accesoDB.Lector["ImagenUrl"];
+                        aux.Marca = new Marca();
+                        aux.Marca.Descripcion = (string)accesoDB.Lector["Marca"];
+                        aux.Marca.Id = (int)accesoDB.Lector["IdMarca"];
+                        aux.Categoria = new Categoria();
+                        aux.Categoria.Descripcion = (string)accesoDB.Lector["Categoria"];
+                        aux.Categoria.Id = (int)accesoDB.Lector["IdCategoria"];
+                        aux.Precio = (decimal)accesoDB.Lector["Precio"];
+
+                        txtCodigo.Text= aux.Codigo;
+                        txtNombre.Text = aux.Nombre;
+                        txtDescripcion.Text = aux.Descripcion;
+                        txtPrecio.Text = aux.Precio.ToString();
+                        txturlImagen.Text= aux.ImagenUrl.ToString();
+                        ddlCategoria.SelectedValue=aux.Categoria.Id.ToString();
+                        ddlMarca.SelectedValue=aux.Marca.Id.ToString();
+                        ImagenUrl.ImageUrl = txturlImagen.Text;
+                    }
+                }
             }
             catch (Exception ex)
             {
@@ -47,6 +83,7 @@ namespace TPFinalNivel3VargasAriel
             {
                 Articulos nuevo = new Articulos();
                 ListaArticulos negocio = new ListaArticulos();
+                
                 nuevo.Codigo=txtCodigo.Text;
                 nuevo.Nombre = txtNombre.Text;
                 nuevo.Descripcion = txtDescripcion.Text;
@@ -59,7 +96,13 @@ namespace TPFinalNivel3VargasAriel
                 nuevo.Marca = new Marca();
                 nuevo.Marca.Id = int.Parse(ddlMarca.SelectedValue);
 
-                negocio.agregar(nuevo);
+                if (Request.QueryString["id"] != null)
+                {
+                    nuevo.Id = int.Parse(Request.QueryString["id"].ToString());
+                    negocio.editar(nuevo);
+                }
+                else
+                    negocio.agregar(nuevo);
                 Response.Redirect("ListaProductos.aspx", false);
             }
             catch (Exception ex)
