@@ -14,7 +14,7 @@
                 <label for="txtNombre" class="form-label">Nombre</label>
                 <asp:TextBox CssClass="form-control" ID="txtNombre" runat="server" />
             </div>
-             <div class="mb-3">
+            <div class="mb-3">
                 <label for="txtMarca" class="form-label">Categoria</label>
                 <asp:DropDownList runat="server" AutoPostBack="true" CssClass="form-select" ID="ddlMarca">
                 </asp:DropDownList>
@@ -24,7 +24,7 @@
                 <asp:DropDownList runat="server" AutoPostBack="true" CssClass="form-select" ID="ddlCategoria">
                 </asp:DropDownList>
             </div>
-             <div class="mb-3">
+            <div class="mb-3">
                 <label for="txtPrecio" class="form-label">Precio</label>
                 <asp:TextBox CssClass="form-control" ID="txtPrecio" runat="server" />
             </div>
@@ -46,6 +46,20 @@
                         <asp:TextBox AutoPostBack="true" CssClass="form-control" ID="txturlImagen" runat="server" OnTextChanged="txturlImagen_TextChanged" />
                     </div>
                     <asp:Image ImageUrl="https://img.freepik.com/vector-premium/vector-icono-imagen-predeterminado-pagina-imagen-faltante-diseno-sitio-web-o-aplicacion-movil-no-hay-foto-disponible_87543-11093.jpg?w=740" runat="server" ID="ImagenUrl" Width="60%" />
+                </ContentTemplate>
+            </asp:UpdatePanel>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-6">
+            <asp:UpdatePanel runat="server">
+                <ContentTemplate>
+                    <asp:Button Text="Eliminar" CssClass="btn btn-outline-red" OnClick="btnEliminar_Click" ID="btnEliminar" runat="server" />
+                    <%if (ConfirmaEliminacion)
+                        { %>
+                    <asp:CheckBox Text="Confirmar Eliminacion" ID="chkEliminar" runat="server" />
+                    <asp:Button Text="Eliminar" ID="btnEliminarConfirmado" OnClick="btnEliminarConfirmado_Click" CssClass="btn btn-danger" runat="server" />
+                    <%} %>
                 </ContentTemplate>
             </asp:UpdatePanel>
         </div>

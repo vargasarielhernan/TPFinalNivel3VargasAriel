@@ -12,8 +12,10 @@ namespace TPFinalNivel3VargasAriel
 {
     public partial class FormularioArticulos : System.Web.UI.Page
     {
+        public bool ConfirmaEliminacion { get; set; }
         protected void Page_Load(object sender, EventArgs e)
         {
+            ConfirmaEliminacion = false;
             try
             {
                 if (!IsPostBack)
@@ -76,7 +78,10 @@ namespace TPFinalNivel3VargasAriel
                 
             }
         }
-
+        protected void btnEliminar_Click(object sender, EventArgs e)
+        {
+            ConfirmaEliminacion = true;
+        }
         protected void btnagregar_Click(object sender, EventArgs e)
         {
             try
@@ -108,13 +113,31 @@ namespace TPFinalNivel3VargasAriel
             catch (Exception ex)
             {
                 Session.Add("Error", ex);
-                throw;
+                Response.Redirect("Error.aspx");
             }
         }
 
         protected void txturlImagen_TextChanged(object sender, EventArgs e)
         {
             ImagenUrl.ImageUrl= txturlImagen.Text;  
+        }
+
+        protected void btnEliminarConfirmado_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if(chkEliminar.Checked)
+                {
+                    ListaArticulos articulos = new ListaArticulos();
+                    articulos.Delete(int.Parse(Request.QueryString["id"]));
+                    Response.Redirect("ListaProductos.aspx");                
+                }
+            }
+            catch (Exception ex)
+            {
+                Session.Add("error", ex);
+                Response.Redirect("Error.aspx");
+            }
         }
     }
 }

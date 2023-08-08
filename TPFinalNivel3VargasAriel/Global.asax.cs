@@ -10,6 +10,7 @@ namespace TPFinalNivel3VargasAriel
 {
     public class Global : System.Web.HttpApplication
     {
+
         protected void Application_Start(object sender, EventArgs e)
         {
             string JQueryVer = "1.11.3";
@@ -23,12 +24,37 @@ namespace TPFinalNivel3VargasAriel
                 LoadSuccessExpression = "window.jQuery"
             });
         }
-        void Application_Error(object sender, EventArgs e)
-        {
-            Exception exc = Server.GetLastError();
 
-            Session.Add("error", exc.ToString());
+        protected void Session_Start(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void Application_BeginRequest(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void Application_AuthenticateRequest(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void Application_Error(object sender, EventArgs e)
+        {
+            Exception ex = Server.GetLastError();
+
+            Session.Add("error", ex.ToString());
             Server.Transfer("Error.aspx");
+        }
+
+        protected void Session_End(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void Application_End(object sender, EventArgs e)
+        {
 
         }
     }

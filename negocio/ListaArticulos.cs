@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Diagnostics.Eventing.Reader;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using Dominio;
+using static System.Collections.Specialized.BitVector32;
 
 namespace negocio
 {
@@ -216,6 +218,20 @@ namespace negocio
                 accesoDB.SetParametro("@Id", nuevo.Id);
                 accesoDB.Runread();
 
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+        public void Delete(int id)
+        {
+            try
+            {
+                AccesoDatos accesoDatos = new AccesoDatos();
+                accesoDatos.Setquery("delete from ARTICULOS where id = @id");
+                accesoDatos.SetParametro("@id", id);
+                accesoDatos.Exeaction();
             }
             catch (Exception ex)
             {
