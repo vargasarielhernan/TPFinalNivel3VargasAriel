@@ -130,7 +130,7 @@ namespace TPFinalNivel3VargasAriel
                 {
                     ListaArticulos articulos = new ListaArticulos();
                     articulos.Delete(int.Parse(Request.QueryString["id"]));
-                    Response.Redirect("ListaProductos.aspx");                
+                    Response.Redirect("ListaProductos.aspx", false);                
                 }
             }
             catch (Exception ex)
