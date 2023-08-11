@@ -11,7 +11,8 @@ namespace TPFinalNivel3VargasAriel
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            lblError.Text = Session["error"].ToString();
+            if (Session["error"]!=null)
+                lblError.Text = Session["error"].ToString();
         }
     }
 }

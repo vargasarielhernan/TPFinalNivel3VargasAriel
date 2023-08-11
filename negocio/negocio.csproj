@@ -47,6 +47,7 @@
     <Compile Include="ListaMarca.cs" />
     <Compile Include="ListaArticulos.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Usuarios.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Elementos\Dominio.csproj">
