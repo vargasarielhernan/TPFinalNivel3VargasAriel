@@ -7,11 +7,6 @@ using System.Threading.Tasks;
 
 namespace Dominio
 {
-    public enum TipoUsuario
-    {
-        NORMAL=0,
-        ADMIN=1
-    }
     public class Users
     {
         public int Id { get; set; }
@@ -20,13 +15,7 @@ namespace Dominio
         public string Password { get; set; }
         public string Email { get; set; }
         public string UrlImagen { get; set; }
-        public TipoUsuario TipoUsuario { get; set;}
-        public Users(string email, string pass, bool admin)
-        {
-            Email = email;
-            Password= pass;
-            TipoUsuario=admin ? TipoUsuario.ADMIN : TipoUsuario.NORMAL;
-        }
+        public bool TipoUsuario { get; set; }
 
     }
 }

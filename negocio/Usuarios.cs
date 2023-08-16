@@ -22,7 +22,7 @@ namespace negocio
                 while (accesoDatos.Lector.Read())
                 {
                     user.Id = (int)accesoDatos.Lector["Id"];
-                    user.TipoUsuario = (int)(accesoDatos.Lector["admin"]) == 1 ? TipoUsuario.ADMIN : TipoUsuario.NORMAL;
+                    user.TipoUsuario = (bool)accesoDatos.Lector["admin"];
                     return true;
                 }
                 return false;

@@ -19,10 +19,11 @@ namespace TPFinalNivel3VargasAriel
         public void btnLog_Click(object sender, EventArgs e)
         {
             Usuarios usuarios = new Usuarios();
-            Users user;
+            Users user = new Users();
             try
             {
-                user = new Users(txtEmail.Text, txtPassword.Text, false);
+                user.Email= txtEmail.Text;
+                user.Password= txtPassword.Text;
                 if (usuarios.Login(user))
                 {
                     Session.Add("usuario", user);

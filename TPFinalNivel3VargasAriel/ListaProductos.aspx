@@ -17,7 +17,7 @@
             </div>
             <div class="col-6" style="display: flex; flex-direction: column; justify-content: flex-end;">
                 <div class="mb-3">
-                    <asp:CheckBox Text="Filtro Avanzado" CssClass="" ID="chkAvanzado" AutoPostBack="true" OnCheckedChanged="chkAvanzado_CheckedChanged" runat="server" />
+                    <asp:CheckBox Text="Filtro Avanzado" CssClass="form-check-input" ID="chkAvanzado" AutoPostBack="true" OnCheckedChanged="chkAvanzado_CheckedChanged" runat="server" />
                 </div>
             </div>
 
