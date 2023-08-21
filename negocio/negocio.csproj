@@ -43,6 +43,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AccesoDatos.cs" />
+    <Compile Include="EmailService.cs" />
     <Compile Include="ListaCategoria.cs" />
     <Compile Include="ListaMarca.cs" />
     <Compile Include="ListaArticulos.cs" />

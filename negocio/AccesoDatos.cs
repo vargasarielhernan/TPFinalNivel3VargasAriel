@@ -46,6 +46,19 @@ namespace negocio
                 throw ex;
             }
         }
+        public int ExeactionScalar()
+        {
+            Comando.Connection = Conexion;
+            try
+            {
+                Conexion.Open();
+                return  int.Parse(Comando.ExecuteScalar().ToString());
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
 
         public void Exeaction()
         {

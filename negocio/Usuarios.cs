@@ -31,6 +31,29 @@ namespace negocio
             {
                 throw ex;
             }
+            finally
+            {
+                accesoDatos.Closeconnection();
+            }
+        }
+        public int Registrarse(Users user)
+        {
+            AccesoDatos accesoDatos = new AccesoDatos();
+            try
+            {
+                accesoDatos.SetearProcedimiento("SpRegistrarse");
+                accesoDatos.SetParametro("@email", user.Email);
+                accesoDatos.SetParametro("@pass", user.Password);
+                return accesoDatos.ExeactionScalar();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                accesoDatos.Closeconnection();
+            }
         }
     }
 }
