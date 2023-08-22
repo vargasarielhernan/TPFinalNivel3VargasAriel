@@ -31,6 +31,7 @@
             <div>
                 <div class="mb-3">
                     <asp:Button Text="Aceptar" CssClass="btn btn-primary" ID="btnagregar" OnClick="btnagregar_Click" runat="server" />
+                    <asp:Button Text="Cancelar" CssClass="btn btn-outline-red" OnClick="btnCancelar_Click" ID="btnCancelar" runat="server" />
                 </div>
             </div>
         </div>
@@ -50,6 +51,8 @@
             </asp:UpdatePanel>
         </div>
     </div>
+    <% if (Request.QueryString["id"] != null && !IsPostBack)
+        {%>
     <div class="row">
         <div class="col-6">
             <asp:UpdatePanel runat="server">
@@ -64,4 +67,5 @@
             </asp:UpdatePanel>
         </div>
     </div>
+    <%} %>
 </asp:Content>

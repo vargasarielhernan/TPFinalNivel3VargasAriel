@@ -13,6 +13,11 @@ namespace TPFinalNivel3VargasAriel
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (!Seguridad.esAdmin(Session["usuario"]))
+            {
+                Session.Add("error", "Se requiere Perfil de administrador");
+                Response.Redirect("Error.aspx", false);
+            }
             ListaArticulos lista = new ListaArticulos();
             Session.Add("listaProductos", lista.ListarSP());
             dgvProductos.DataSource = Session["listaProductos"];

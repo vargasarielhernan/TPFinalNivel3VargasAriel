@@ -139,5 +139,10 @@ namespace TPFinalNivel3VargasAriel
                 Response.Redirect("Error.aspx");
             }
         }
+
+        protected void btnCancelar_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("ListaProductos.aspx", false);
+        }
     }
 }

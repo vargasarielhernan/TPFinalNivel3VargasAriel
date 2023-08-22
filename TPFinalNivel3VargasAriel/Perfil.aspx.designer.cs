@@ -11,7 +11,7 @@ namespace TPFinalNivel3VargasAriel
 {
 
 
-    public partial class Mi_Perfil
+    public partial class Perfil
     {
 
         /// <summary>

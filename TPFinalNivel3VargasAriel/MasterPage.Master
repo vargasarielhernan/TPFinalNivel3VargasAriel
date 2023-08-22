@@ -31,7 +31,7 @@
                             <a class="nav-link" href="Login.aspx">Login</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="Mi Perfil.aspx">Mi Perfil</a>
+                            <a class="nav-link" href="Perfil.aspx">Perfil</a>
                         </li><li class="nav-item">
                             <a class="nav-link" href="Registrarse.aspx">Registrarse</a>
                         </li>

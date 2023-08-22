@@ -45,7 +45,7 @@ namespace TPFinalNivel3VargasAriel
             Exception ex = Server.GetLastError();
 
             Session.Add("error", ex.ToString());
-            Server.Transfer("Error.aspx");
+            Server.Transfer("Error.aspx", false);
         }
 
         protected void Session_End(object sender, EventArgs e)
