@@ -34,7 +34,7 @@ namespace TPFinalNivel3VargasAriel
                     ddlMarca.DataTextField = "Descripcion";
                     ddlMarca.DataBind();
                 }
-                if (Request.QueryString["id"]!=null && !IsPostBack)
+                if (Request.QueryString["id"]!=null && !IsPostBack) 
                 {
                     Articulos articulo = new Articulos();
                     AccesoDatos accesoDB = new AccesoDatos();

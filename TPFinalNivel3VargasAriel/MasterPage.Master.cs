@@ -5,6 +5,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using Dominio;
 
 namespace TPFinalNivel3VargasAriel
 {
@@ -12,11 +13,23 @@ namespace TPFinalNivel3VargasAriel
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if(Page is Perfil || Page is FormularioArticulos)
+            ImagenAvatar.ImageUrl = "https://st3.depositphotos.com/6672868/13701/v/450/depositphotos_137014128-stock-illustration-user-profile-icon.jpg";
+            if (Page is Perfil || Page is FormularioArticulos)
             {
                 if (!Seguridad.sesionActiva(Session["usuario"]))
                     Response.Redirect("Login.aspx", false);
             }
+            if (Seguridad.sesionActiva(Session["usuario"]))
+            {
+                if (!string.IsNullOrEmpty(((Users)(Session["usuario"])).UrlImagen))
+                    ImagenAvatar.ImageUrl = "~/Images/" + ((Users)(Session["usuario"])).UrlImagen;
+            }
+        }
+
+        protected void btnSalir_Click(object sender, EventArgs e)
+        {
+            Session.Clear();
+            Response.Redirect("Login.aspx", false);
         }
     }
 }

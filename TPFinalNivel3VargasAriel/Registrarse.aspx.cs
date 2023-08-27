@@ -26,6 +26,7 @@ namespace TPFinalNivel3VargasAriel
                 user.Email = txtEmail.Text;
                 user.Password = txtPassword.Text;
                 user.Id = usuarios.Registrarse(user);
+                Session.Add("usuario", user);
 
                 emailService.armarCorreo(user.Email, "Bienvenido a Maxitienda", "Hola te damos la bienvenida a Maxitienda. ¿Que esperas para gastar todo tu sueldo en nuestros productos?");
                 emailService.enviarEmail();

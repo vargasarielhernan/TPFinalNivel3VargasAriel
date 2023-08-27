@@ -28,15 +28,22 @@
                             <a class="nav-link" href="ListaProductos.aspx">Productos</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="Login.aspx">Login</a>
-                        </li>
-                        <li class="nav-item">
                             <a class="nav-link" href="Perfil.aspx">Perfil</a>
-                        </li><li class="nav-item">
-                            <a class="nav-link" href="Registrarse.aspx">Registrarse</a>
                         </li>
                     </ul>
-                </div>               
+                </div>
+                <div class="d-flex">
+                    <%if (!negocio.Seguridad.sesionActiva(Session["usuario"]))
+                        { %>
+                    <a class="btn btn-success me-2" href="Login.aspx">Login</a>
+                    <a class="btn btn-outline-primary m-auto" href="Registrarse.aspx">Registrarse</a>
+                    <%}
+                        else
+                        {%>
+                    <asp:Button Text="Salir" runat="server" CssClass="nav-link" ID="btnSalir" OnClick="btnSalir_Click" />
+                    <%}%>
+                    <asp:Image ID="ImagenAvatar" runat="server" style="height:40px;width:40px; border-radius:50%" /> 
+                </div>
             </div>
         </nav>
         <div>
@@ -44,7 +51,7 @@
             </asp:ContentPlaceHolder>
         </div>
     </form>
-        <!-- JavaScript Bundle with Popper -->
+    <!-- JavaScript Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
 
 </body>

@@ -10,12 +10,32 @@ namespace negocio
 {
     public class Usuarios
     {
+        public void ActualizarUser(Users user)
+        {
+            AccesoDatos accesoDatos = new AccesoDatos();
+            try
+            {
+                accesoDatos.Setquery("update USERS set urlImagenPerfil=@imagen where Id=@Id");
+                accesoDatos.SetParametro("@imagen", user.UrlImagen);
+                accesoDatos.SetParametro("@Id", user.Id);
+                accesoDatos.Exeaction();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                accesoDatos.Closeconnection();
+            }
+        }
+
         public bool Login(Users user)
         {
             AccesoDatos accesoDatos = new AccesoDatos();
             try
             {
-                accesoDatos.Setquery("select Id, admin from USERS where email=@email and pass=@pass");
+                accesoDatos.Setquery("select Id, admin, urlImagenPerfil from USERS where email=@email and pass=@pass");
                 accesoDatos.SetParametro("@email", user.Email);
                 accesoDatos.SetParametro("@pass", user.Password);
                 accesoDatos.Runread();
@@ -23,6 +43,8 @@ namespace negocio
                 {
                     user.Id = (int)accesoDatos.Lector["Id"];
                     user.TipoUsuario = (bool)accesoDatos.Lector["admin"];
+                    if(!(accesoDatos.Lector["urlImagenPerfil"] is DBNull))
+                        user.UrlImagen = (string)accesoDatos.Lector["urlImagenPerfil"];
                     return true;
                 }
                 return false;
