@@ -72,10 +72,8 @@ namespace TPFinalNivel3VargasAriel
             }
             catch (Exception ex)
             {
-
                 Session.Add("Error", ex);
-                throw;
-                
+                Response.Redirect("Error.aspx", false);                
             }
         }
         protected void btnEliminar_Click(object sender, EventArgs e)

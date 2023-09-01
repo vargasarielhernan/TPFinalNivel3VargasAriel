@@ -21,6 +21,7 @@ namespace TPFinalNivel3VargasAriel
             }
             if (Seguridad.sesionActiva(Session["usuario"]))
             {
+                lblUser.Text = ((Users)Session["usuario"]).Email;
                 if (!string.IsNullOrEmpty(((Users)(Session["usuario"])).UrlImagen))
                     ImagenAvatar.ImageUrl = "~/Images/" + ((Users)(Session["usuario"])).UrlImagen;
             }

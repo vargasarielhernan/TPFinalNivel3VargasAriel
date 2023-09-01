@@ -8,10 +8,12 @@
             <div class="mb-3">
                 <label for="txtEmail" class="form-label">Email</label>
                 <asp:TextBox runat="server" CssClass="form-control" ID="txtEmail" />
+                <asp:RequiredFieldValidator Cssclass="form-control is-invalid" ErrorMessage="Email requerido" ControlToValidate="txtEmail" runat="server" />
             </div>
             <div class="mb-3">
                 <label for="txtPass" class="form-label">Password</label>
                 <asp:TextBox runat="server" CssClass="form-control" ID="txtPass" Type="Password" />
+                <asp:RequiredFieldValidator ErrorMessage="Password requerida" Cssclass="form-control is-invalid" ControlToValidate="txtPass" runat="server" />
             </div>
             <div class="mb-3">
                 <label for="txtNombre" class="form-label">Nombre</label>

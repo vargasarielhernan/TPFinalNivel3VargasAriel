@@ -35,7 +35,7 @@ namespace negocio
             AccesoDatos accesoDatos = new AccesoDatos();
             try
             {
-                accesoDatos.Setquery("select Id, admin, urlImagenPerfil from USERS where email=@email and pass=@pass");
+                accesoDatos.Setquery("select Id, admin, Nombre, Apellido, urlImagenPerfil from USERS where email=@email and pass=@pass");
                 accesoDatos.SetParametro("@email", user.Email);
                 accesoDatos.SetParametro("@pass", user.Password);
                 accesoDatos.Runread();
@@ -43,6 +43,10 @@ namespace negocio
                 {
                     user.Id = (int)accesoDatos.Lector["Id"];
                     user.TipoUsuario = (bool)accesoDatos.Lector["admin"];
+                    if(!(accesoDatos.Lector["Nombre"] is DBNull))
+                        user.Nombre = (string)accesoDatos.Lector["Nombre"];
+                    if (!(accesoDatos.Lector["Apellido"] is DBNull))
+                        user.Apellido = (string)accesoDatos.Lector["Apellido"];
                     if(!(accesoDatos.Lector["urlImagenPerfil"] is DBNull))
                         user.UrlImagen = (string)accesoDatos.Lector["urlImagenPerfil"];
                     return true;

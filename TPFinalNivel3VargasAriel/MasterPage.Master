@@ -39,8 +39,10 @@
                     <a class="btn btn-outline-primary m-auto" href="Registrarse.aspx">Registrarse</a>
                     <%}
                         else
-                        {%>
-                    <asp:Button Text="Salir" runat="server" CssClass="nav-link" ID="btnSalir" OnClick="btnSalir_Click" />
+                        {
+%>
+                             <asp:Button Text="Salir" runat="server" CssClass="nav-link" ID="btnSalir" OnClick="btnSalir_Click" />
+                             <asp:Label id="lblUser" Text="user" CssClass="text-light m-auto me-2" runat="server" />
                     <%}%>
                     <asp:Image ID="ImagenAvatar" runat="server" style="height:40px;width:40px; border-radius:50%" /> 
                 </div>

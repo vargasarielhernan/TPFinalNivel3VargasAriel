@@ -22,8 +22,8 @@ namespace TPFinalNivel3VargasAriel
             Users user = new Users();
             try
             {
-                user.Email= txtEmail.Text;
-                user.Password= txtPassword.Text;
+                user.Email = txtEmail.Text;
+                user.Password = txtPassword.Text;
                 if (usuarios.Login(user))
                 {
                     Session.Add("usuario", user);
@@ -31,9 +31,11 @@ namespace TPFinalNivel3VargasAriel
                 }
                 else
                 {
-                    Session.Add("error", "Email o contraseña incorrectos, en caso de no tener usuario crear");
-                    Response.Redirect("Error.aspx", false);
+                    // Session.Add("error", "Email o contraseña incorrectos, en caso de no tener usuario crear");
+                    // Response.Redirect("Error.aspx", false);
+                    txtlabelError.EnableViewState = false;
                 }
+
             }
             catch (Exception ex)
             {
