@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Deployment.Internal;
 using System.Diagnostics.Eventing.Reader;
 using System.Linq;
 using System.Text;
@@ -53,7 +54,7 @@ namespace negocio
                 accesoDB.Closeconnection();
             }
 
-        }
+        }        
         public List<Articulos> filtrar(string campo, string criterio, string filtro)
         {
             List<Articulos> lista = new List<Articulos>();
@@ -236,6 +237,39 @@ namespace negocio
             catch (Exception ex)
             {
                 throw ex;
+            }
+        }
+        public List<Articulos> mapearFav(int id)
+        {
+            List<Articulos> lista = new List<Articulos>();
+            AccesoDatos accesoDatos = new AccesoDatos();
+            try
+            {
+                accesoDatos.Setquery("select A.Id, A.Nombre, A.Descripcion,A.ImagenUrl, A.Precio, U.Id, F.IdUser,F.IdArticulo from ARTICULOS A, USERS U,FAVORITOS F where F.IdUser=U.Id and A.Id=F.IdArticulo and U.Id=@Id");
+                accesoDatos.SetParametro("@Id", id);
+                accesoDatos.Runread();
+                while (accesoDatos.Lector.Read())
+                {
+                    Articulos aux = new Articulos();
+                    aux.Id = (int)accesoDatos.Lector["Id"];
+                    aux.Nombre = (string)accesoDatos.Lector["Nombre"];
+                    aux.Descripcion = (string)accesoDatos.Lector["Descripcion"];
+                    if (!(accesoDatos.Lector["ImagenUrl"] is DBNull))
+                        aux.ImagenUrl = (string)accesoDatos.Lector["ImagenUrl"];
+                    aux.Precio = (decimal)accesoDatos.Lector["Precio"];
+
+                    lista.Add(aux);
+                }
+                return lista;
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            finally
+            {
+                accesoDatos.Closeconnection();
             }
         }
     }

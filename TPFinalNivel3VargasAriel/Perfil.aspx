@@ -15,7 +15,7 @@
             <div class="mb-3">
                 <label for="txtPass" class="form-label">Password</label>
                 <asp:TextBox runat="server" CssClass="form-control" ID="txtPass" Type="Password" MaxLength="20" />
-                <asp:RequiredFieldValidator Cssclass="form-control is-invalid" ErrorMessage="Password requerida" CssClass="form-control is-invalid" ControlToValidate="txtPass" runat="server" />
+                <asp:RequiredFieldValidator Cssclass="form-control is-invalid" ErrorMessage="Password requerida" ControlToValidate="txtPass" runat="server" />
             </div>
             <div class="mb-3">
                 <label for="txtNombre" class="form-label">Nombre</label>
