@@ -8,6 +8,7 @@
             <label for="txtEmail" class="form-label">Email address</label>
             <asp:TextBox runat="server" type="email" class="form-control" ID="txtEmail" aria-describedby="emailHelp" />
             <asp:RequiredFieldValidator Cssclass="form-control is-invalid" ErrorMessage="Debe completar todos los campos" ControlToValidate="txtEmail" runat="server" />
+            <asp:RegularExpressionValidator Cssclass="form-control is-invalid" ErrorMessage="Formato incorrecto" ValidationExpression="^([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$" ControlToValidate="txtEmail" runat="server" />
         </div>
         <div class="mb-3">
             <label for="txtPassword" class="form-label">Password</label>

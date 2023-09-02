@@ -6,6 +6,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using Dominio;
+using System.Configuration;
 
 namespace TPFinalNivel3VargasAriel
 {
@@ -13,13 +14,16 @@ namespace TPFinalNivel3VargasAriel
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session["usuario"] != null)
+            if (Session["usuario"] != null && !IsPostBack)
             {
+                imagenUrl.ImageUrl = "https://i0.wp.com/casagres.com.ar/wp-content/uploads/2022/09/placeholder.png?ssl=1";
                 Users user = (Users)Session["usuario"];
                 txtEmail.Text =user.Email;
                 txtPass.Text = user.Password;
                 txtNombre.Text = user.Nombre;
                 txtApellido.Text = user.Apellido;
+                if (!string.IsNullOrEmpty(((Users)(Session["usuario"])).UrlImagen))
+                    imagenUrl.ImageUrl = "~/Images/" + ((Users)(Session["usuario"])).UrlImagen;
 
             }
         }
@@ -28,6 +32,9 @@ namespace TPFinalNivel3VargasAriel
         {
             try
             {
+                Page.Validate();
+                if(!Page.IsValid)
+                    return;
                 string ruta = Server.MapPath("./images/");
                 Usuarios usuario = new Usuarios();
                 Users user = (Users)Session["usuario"];
@@ -50,6 +57,7 @@ namespace TPFinalNivel3VargasAriel
                 Session.Add("error", ex);
                 Response.Redirect("Error.aspx", false);
             }
+            
         }
     }
 }

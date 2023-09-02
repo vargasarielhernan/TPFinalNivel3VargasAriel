@@ -15,8 +15,10 @@ namespace negocio
             AccesoDatos accesoDatos = new AccesoDatos();
             try
             {
-                accesoDatos.Setquery("update USERS set urlImagenPerfil=@imagen where Id=@Id");
+                accesoDatos.Setquery("update USERS set urlImagenPerfil=@imagen, Nombre=@Nombre, Apellido=@Apellido where Id=@Id");
                 accesoDatos.SetParametro("@imagen", user.UrlImagen);
+                accesoDatos.SetParametro("@Nombre", user.Nombre);
+                accesoDatos.SetParametro("@Apellido", user.Apellido);
                 accesoDatos.SetParametro("@Id", user.Id);
                 accesoDatos.Exeaction();
             }

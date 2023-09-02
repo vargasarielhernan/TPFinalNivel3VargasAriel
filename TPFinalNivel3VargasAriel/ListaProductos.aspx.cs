@@ -57,6 +57,9 @@ namespace TPFinalNivel3VargasAriel
         {
             try
             {
+                Page.Validate();
+                if (!Page.IsValid)
+                    return;
                 ListaArticulos lista = new ListaArticulos();
                  String Criterio = ddlCriterio.SelectedItem.ToString();
                 dgvProductos.DataSource = lista.filtrar(ddlCampo.SelectedItem.ToString(), Criterio, txtFiltroAvanzado.Text);

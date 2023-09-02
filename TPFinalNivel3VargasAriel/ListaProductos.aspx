@@ -46,7 +46,11 @@
                 <div class="col-3">
                     <div class="mb-3">
                         <asp:Label Text="Filtro" runat="server" />
-                        <asp:TextBox runat="server" ID="txtFiltroAvanzado" CssClass="form-control" />
+                         <asp:TextBox runat="server" ID="txtFiltroAvanzado" CssClass="form-control" />
+                        <% if (ddlCampo.SelectedItem.ToString() == "Precio")                       
+                            {%>
+                        <asp:RegularExpressionValidator ErrorMessage="Solo se admiten numeros" ValidationExpression="^[0-9]+$" ControlToValidate="txtFiltroAvanzado" runat="server" />
+                        <%} %>
                     </div>
                 </div>
             </div>
