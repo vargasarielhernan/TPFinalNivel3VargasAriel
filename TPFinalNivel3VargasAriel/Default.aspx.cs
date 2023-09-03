@@ -20,17 +20,28 @@ namespace TPFinalNivel3VargasAriel
             Repetidor.DataBind();
 
         }
-        protected void agregarfav(Object sender, EventArgs e)
+        protected void agregarFav(object sender, EventArgs e)
         {
-            Favorito favorito = new Favorito();
-            Favs favs = new Favs();
-            Users user = new Users();
-            int IdFav = int.Parse(((LinkButton)sender).CommandArgument);
-            user = (Users)Session["usuario"];
-            int IdUser = user.Id;
-            favorito.IdUser = IdUser;
-            favorito.IdArticulo = IdFav;
-            favs.guardarFav(favorito);
+            if (negocio.Seguridad.sesionActiva(Session["usuario"]))
+            {
+                Users user = new Users();
+                Favorito favorito = new Favorito();
+                Favs favs = new Favs();
+                int IdFav = int.Parse(((LinkButton)sender).CommandArgument);
+                user = (Users)Session["usuario"];
+                int IdUser = user.Id;
+                favorito.IdUser = IdUser;
+                favorito.IdArticulo = IdFav;
+                if (favs.existeFav(IdFav))
+                {
+                    favs.eliminarFav(IdFav);
+                }
+                else
+                {
+                    favs.guardarFav(favorito);
+
+                }
+            }
         }
     }
 }

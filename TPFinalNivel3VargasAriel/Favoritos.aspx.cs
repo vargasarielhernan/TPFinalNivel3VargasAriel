@@ -14,14 +14,37 @@ namespace TPFinalNivel3VargasAriel
         public List<Articulos> ProdFavs { get; set; }
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Seguridad.sesionActiva(Session["usuario"]))
+            if (negocio.Seguridad.sesionActiva(Session["usuario"]))
             {
                 Users User = ((Users)Session["Usuario"]);
                 int id = User.Id;
                 ListaArticulos lista = new ListaArticulos();
                 ProdFavs = lista.mapearFav(id);
-                Repetidor.DataSource = ProdFavs;
-                Repetidor.DataBind();
+                RepetidorFav.DataSource = ProdFavs;
+                RepetidorFav.DataBind();
+            }
+        }
+        protected void cambiarFav(object sender, EventArgs e)
+        {
+            if (negocio.Seguridad.sesionActiva(Session["usuario"]))
+            {
+                Users user = new Users();
+                Favorito favorito = new Favorito();
+                Favs favs = new Favs();
+                int IdFav = int.Parse(((LinkButton)sender).CommandArgument);
+                user = (Users)Session["usuario"];
+                int IdUser = user.Id;
+                favorito.IdUser = IdUser;
+                favorito.IdArticulo = IdFav;
+                if (favs.existeFav(IdFav))
+                {
+                    favs.eliminarFav(IdFav);
+                }
+                else
+                {
+                    favs.guardarFav(favorito);
+
+                }
             }
         }
     }
