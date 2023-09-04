@@ -73,11 +73,12 @@
                                 <asp:BoundField HeaderText="Marca" DataField="Marca.Descripcion" />
                                 <asp:BoundField HeaderText="Categoria" DataField="Categoria.Descripcion" />
                                 <asp:BoundField HeaderText="Precio" DataField="Precio" />
-                                <asp:CommandField ShowSelectButton="true" SelectText="Editar" HeaderText="Acciones"/>
+                                <asp:CommandField ShowSelectButton="true" SelectText="Detalles" HeaderText="Acciones"/>
                                 <asp:BoundField HeaderText="ImagenUrl" DataField="ImagenUrl" />
                             </Columns>
                         </asp:GridView>
-                        <a class="btn btn-dark" href="FormularioArticulos.aspx">Agregar</a>
+                         <%if(negocio.Seguridad.esAdmin(Session["usuario"])){ %>
+                        <a class="btn btn-dark" href="FormularioArticulos.aspx">Agregar</a> <%} %>
                     </div>
                 </div>
             </div>

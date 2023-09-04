@@ -16,6 +16,7 @@ namespace TPFinalNivel3VargasAriel
         {
             if (Session["usuario"] != null && !IsPostBack)
             {
+                txtEmail.Enabled = false;
                 imagenUrl.ImageUrl = "https://i0.wp.com/casagres.com.ar/wp-content/uploads/2022/09/placeholder.png?ssl=1";
                 Users user = (Users)Session["usuario"];
                 txtEmail.Text =user.Email;

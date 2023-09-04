@@ -22,6 +22,7 @@ namespace TPFinalNivel3VargasAriel
                 ProdFavs = lista.mapearFav(id);
                 RepetidorFav.DataSource = ProdFavs;
                 RepetidorFav.DataBind();
+
             }
         }
         protected void cambiarFav(object sender, EventArgs e)
@@ -36,16 +37,23 @@ namespace TPFinalNivel3VargasAriel
                 int IdUser = user.Id;
                 favorito.IdUser = IdUser;
                 favorito.IdArticulo = IdFav;
-                if (favs.existeFav(IdFav))
+                if (favs.existeFav(favorito))
                 {
-                    favs.eliminarFav(IdFav);
+                    favs.eliminarFav(favorito.Id);
+                    rellenoCora();
+                    Response.Redirect("Favoritos.aspx", false);
                 }
                 else
                 {
                     favs.guardarFav(favorito);
-
                 }
             }
         }
+
+        protected bool rellenoCora()
+        {
+            return false;
+        }
+
     }
 }

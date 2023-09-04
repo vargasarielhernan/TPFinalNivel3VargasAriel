@@ -13,11 +13,6 @@ namespace TPFinalNivel3VargasAriel
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!Seguridad.esAdmin(Session["usuario"]))
-            {
-                Session.Add("error", "Se requiere Perfil de administrador");
-                Response.Redirect("Error.aspx", false);
-            }
             ListaArticulos lista = new ListaArticulos();
             Session.Add("listaProductos", lista.ListarSP());
             dgvProductos.DataSource = Session["listaProductos"];
@@ -27,7 +22,7 @@ namespace TPFinalNivel3VargasAriel
         {
             List<Articulos> lista = (List<Articulos>)Session["listaProductos"];
             List<Articulos> listaFiltrada = lista.FindAll(x => x.Nombre.ToUpper().Contains(txtFiltro.Text.ToUpper()));
-            dgvProductos.DataSource= listaFiltrada;
+            dgvProductos.DataSource = listaFiltrada;
             dgvProductos.DataBind();
         }
         protected void chkAvanzado_CheckedChanged(object sender, EventArgs e)
@@ -61,7 +56,7 @@ namespace TPFinalNivel3VargasAriel
                 if (!Page.IsValid)
                     return;
                 ListaArticulos lista = new ListaArticulos();
-                 String Criterio = ddlCriterio.SelectedItem.ToString();
+                String Criterio = ddlCriterio.SelectedItem.ToString();
                 dgvProductos.DataSource = lista.filtrar(ddlCampo.SelectedItem.ToString(), Criterio, txtFiltroAvanzado.Text);
                 dgvProductos.DataBind();
             }
@@ -74,7 +69,7 @@ namespace TPFinalNivel3VargasAriel
 
         protected void dgvProductos_SelectedIndexChanged(object sender, EventArgs e)
         {
-            var id =dgvProductos.SelectedDataKey.Value.ToString();
+            var id = dgvProductos.SelectedDataKey.Value.ToString();
             Response.Redirect("FormularioArticulos.aspx?Id=" + id);
         }
     }

@@ -48,22 +48,23 @@ namespace negocio
             }
             finally { accesoDatos.Closeconnection(); }
         } 
-        public bool existeFav(int ID)
+        public bool existeFav(Favorito favorito)
         {
             AccesoDatos accesoDatos = new AccesoDatos();
             try
             {
-                accesoDatos.Setquery("select F.Id as Id from FAVORITOS F, USERS U,ARTICULOS A where U.Id= F.IdUser and A.Id=F.IdArticulo and A.Id=@Id");
-                accesoDatos.SetParametro("@Id", ID);
+                accesoDatos.Setquery("select F.IdArticulo, F.IdUser, F.Id from ARTICULOS A, USERS U, FAVORITOS F where U.Id=@User and U.Id=F.IdUser and A.Id=@Arti and A.Id=F.IdArticulo");
+                accesoDatos.SetParametro("@User", favorito.IdUser);
+                accesoDatos.SetParametro("@Arti", favorito.IdArticulo);
                 accesoDatos.Runread();
                 while (accesoDatos.Lector.Read())
                 {
                     if(!((accesoDatos.Lector["Id"]) is DBNull))
                     {
-                        ID= (int)accesoDatos.Lector["Id"];
+                        favorito.Id= (int)accesoDatos.Lector["Id"];
                     }
                 }
-                if (ID != 0)
+                if (favorito.Id != 0)
                     return true;
                 return false;
                 

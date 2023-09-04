@@ -34,7 +34,7 @@ namespace TPFinalNivel3VargasAriel
                     ddlMarca.DataTextField = "Descripcion";
                     ddlMarca.DataBind();
                 }
-                if (Request.QueryString["id"]!=null && !IsPostBack) 
+                if (Request.QueryString["id"] != null && !IsPostBack)
                 {
                     Articulos articulo = new Articulos();
                     AccesoDatos accesoDB = new AccesoDatos();
@@ -59,21 +59,31 @@ namespace TPFinalNivel3VargasAriel
                         aux.Categoria.Id = (int)accesoDB.Lector["IdCategoria"];
                         aux.Precio = (decimal)accesoDB.Lector["Precio"];
 
-                        txtCodigo.Text= aux.Codigo;
+                        txtCodigo.Text = aux.Codigo;
                         txtNombre.Text = aux.Nombre;
                         txtDescripcion.Text = aux.Descripcion;
                         txtPrecio.Text = aux.Precio.ToString();
-                        txturlImagen.Text= aux.ImagenUrl.ToString();
-                        ddlCategoria.SelectedValue=aux.Categoria.Id.ToString();
-                        ddlMarca.SelectedValue=aux.Marca.Id.ToString();
+                        txturlImagen.Text = aux.ImagenUrl.ToString();
+                        ddlCategoria.SelectedValue = aux.Categoria.Id.ToString();
+                        ddlMarca.SelectedValue = aux.Marca.Id.ToString();
                         ImagenUrl.ImageUrl = txturlImagen.Text;
+
+                        if (!(Seguridad.esAdmin(Session["usuario"]))){
+                            txtCodigo.Enabled= false;
+                            txtNombre.Enabled= false;
+                            txtDescripcion.Enabled= false;
+                            ddlCategoria.Enabled= false;
+                            ddlMarca.Enabled= false;
+                            txtPrecio.Enabled= false;
+                            txturlImagen.Enabled= false;
+                        }
                     }
                 }
             }
             catch (Exception ex)
             {
                 Session.Add("Error", ex);
-                Response.Redirect("Error.aspx", false);                
+                Response.Redirect("Error.aspx", false);
             }
         }
         protected void btnEliminar_Click(object sender, EventArgs e)
@@ -82,53 +92,58 @@ namespace TPFinalNivel3VargasAriel
         }
         protected void btnagregar_Click(object sender, EventArgs e)
         {
-            try
+            if (Seguridad.esAdmin(Session["usuario"]))
             {
-                Articulos nuevo = new Articulos();
-                ListaArticulos negocio = new ListaArticulos();
-                
-                nuevo.Codigo=txtCodigo.Text;
-                nuevo.Nombre = txtNombre.Text;
-                nuevo.Descripcion = txtDescripcion.Text;
-                nuevo.ImagenUrl = txturlImagen.Text;
-                nuevo.Precio = decimal.Parse(txtPrecio.Text);
-
-                nuevo.Categoria = new Categoria();
-                nuevo.Categoria.Id = int.Parse(ddlCategoria.SelectedValue);
-
-                nuevo.Marca = new Marca();
-                nuevo.Marca.Id = int.Parse(ddlMarca.SelectedValue);
-
-                if (Request.QueryString["id"] != null)
+                try
                 {
-                    nuevo.Id = int.Parse(Request.QueryString["id"].ToString());
-                    negocio.editar(nuevo);
+                    Articulos nuevo = new Articulos();
+                    ListaArticulos negocio = new ListaArticulos();
+
+                    nuevo.Codigo = txtCodigo.Text;
+                    nuevo.Nombre = txtNombre.Text;
+                    nuevo.Descripcion = txtDescripcion.Text;
+                    nuevo.ImagenUrl = txturlImagen.Text;
+                    nuevo.Precio = decimal.Parse(txtPrecio.Text);
+
+                    nuevo.Categoria = new Categoria();
+                    nuevo.Categoria.Id = int.Parse(ddlCategoria.SelectedValue);
+
+                    nuevo.Marca = new Marca();
+                    nuevo.Marca.Id = int.Parse(ddlMarca.SelectedValue);
+
+                    if (Request.QueryString["id"] != null)
+                    {
+                        nuevo.Id = int.Parse(Request.QueryString["id"].ToString());
+                        negocio.editar(nuevo);
+                    }
+                    else
+                        negocio.agregar(nuevo);
+                    Response.Redirect("ListaProductos.aspx", false);
                 }
-                else
-                    negocio.agregar(nuevo);
+                catch (Exception ex)
+                {
+                    Session.Add("Error", ex);
+                    Response.Redirect("Error.aspx");
+                }
+            }
+            else
                 Response.Redirect("ListaProductos.aspx", false);
-            }
-            catch (Exception ex)
-            {
-                Session.Add("Error", ex);
-                Response.Redirect("Error.aspx");
-            }
         }
 
         protected void txturlImagen_TextChanged(object sender, EventArgs e)
         {
-            ImagenUrl.ImageUrl= txturlImagen.Text;  
+            ImagenUrl.ImageUrl = txturlImagen.Text;
         }
 
         protected void btnEliminarConfirmado_Click(object sender, EventArgs e)
         {
             try
             {
-                if(chkEliminar.Checked)
+                if (chkEliminar.Checked)
                 {
                     ListaArticulos articulos = new ListaArticulos();
                     articulos.Delete(int.Parse(Request.QueryString["id"]));
-                    Response.Redirect("ListaProductos.aspx", false);                
+                    Response.Redirect("ListaProductos.aspx", false);
                 }
             }
             catch (Exception ex)

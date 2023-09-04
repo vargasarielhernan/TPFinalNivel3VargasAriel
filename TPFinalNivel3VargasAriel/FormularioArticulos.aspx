@@ -52,8 +52,10 @@
             </asp:UpdatePanel>
         </div>
     </div>
-    <% if (Request.QueryString["id"] != null && !IsPostBack)
-        {%>
+    <%if (negocio.Seguridad.esAdmin(Session["usuario"]))
+        {
+            if (Request.QueryString["id"] != null && !IsPostBack)
+            {%>
     <div class="row">
         <div class="col-6">
             <asp:UpdatePanel runat="server">
@@ -68,5 +70,6 @@
             </asp:UpdatePanel>
         </div>
     </div>
-    <%} %>
+         <%}
+        }%>
 </asp:Content>
