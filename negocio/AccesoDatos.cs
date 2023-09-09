@@ -20,7 +20,7 @@ namespace negocio
 
         public AccesoDatos()
         {
-            Conexion = new SqlConnection("server=.\\SQLEXPRESS; database=CATALOGO_WEB_DB; integrated security=true");
+            Conexion = new SqlConnection(ConfigurationManager.AppSettings["cadenaDeConeccion"]);
             Comando = new SqlCommand();
         }
         public void SetearProcedimiento(string sp)
