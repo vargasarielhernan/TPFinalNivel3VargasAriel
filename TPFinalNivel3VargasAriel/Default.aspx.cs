@@ -14,10 +14,14 @@ namespace TPFinalNivel3VargasAriel
         public List<Articulos> Productos { get; set; }
         protected void Page_Load(object sender, EventArgs e)
         {
-            ListaArticulos lista = new ListaArticulos();
-            Productos = lista.ListarSP();
-            Repetidor.DataSource = Productos;
-            Repetidor.DataBind();
+            if (!IsPostBack)
+            {
+                ListaArticulos lista = new ListaArticulos();
+                Productos = lista.ListarSP();
+                Repetidor.DataSource = Productos;
+                Repetidor.DataBind();
+
+            }
         }
         protected void agregarFav(object sender, EventArgs e)
         {
@@ -45,7 +49,23 @@ namespace TPFinalNivel3VargasAriel
         }
         protected bool rellenoCo()
         {
-                return true;
+            return true;
+        }
+
+        protected void btnDetalles(object sender, EventArgs e)
+        {
+            try
+            {
+
+                int id = int.Parse(((Button)sender).CommandArgument);
+                Response.Redirect("FormularioArticulos.aspx?Id=" + id, false);
+
+            }
+            catch (Exception ex)
+            {
+                Session.Add("Error", ex.ToString());
+                Response.Redirect("Error.aspx", false);
+            }
         }
     }
 }

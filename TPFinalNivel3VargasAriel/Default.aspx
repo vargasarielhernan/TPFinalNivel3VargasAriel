@@ -8,7 +8,7 @@
             <ItemTemplate>
                 <div class="col">
                     <div class="card" style="width: 18rem;">
-                        <img src="<%#Eval("ImagenUrl")%>" class="card-img-top" alt="...">
+                        <img src="<%#Eval("ImagenUrl")%>" class="card-img-top" style="height: 22rem; object-fit: cover;" alt="...">
                         <div class="card-body">
                             <h5 class="card-title"><%#Eval("Nombre")%>
                                 <asp:LinkButton CommandArgument='<%#Eval("Id")%>' CommandName="ArticuloId" OnClick="agregarFav" ID="agregarFavo" runat="server">
@@ -27,6 +27,7 @@
                                 </asp:LinkButton>
                             </h5>
                             <p class="card-text"><%#Eval("Descripcion") %></p>
+                            <asp:Button ID="btnDetallesCard" CommandArgument='<%#Eval("Id")%>' CommandName="dId" Text="Detalles" CssClass="btn btn-primary" runat="server" OnClick="btnDetalles"/>
                         </div>
                     </div>
                 </div>

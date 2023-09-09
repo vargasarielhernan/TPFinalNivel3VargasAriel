@@ -9,6 +9,7 @@ using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using Dominio;
 using static System.Collections.Specialized.BitVector32;
+using static System.Net.WebRequestMethods;
 
 namespace negocio
 {
@@ -31,6 +32,8 @@ namespace negocio
                     aux.Descripcion = (string)accesoDB.Lector["Descripcion"];
                     if (!(accesoDB.Lector["ImagenUrl"] is DBNull))
                         aux.ImagenUrl = (string)accesoDB.Lector["ImagenUrl"];
+                    else
+                        aux.ImagenUrl = "https://st3.depositphotos.com/6672868/13701/v/450/depositphotos_137014128-stock-illustration-user-profile-icon.jpg";
                     aux.Marca = new Marca();
                     aux.Marca.Descripcion = (string)accesoDB.Lector["Marca"];
                     aux.Marca.Id = (int)accesoDB.Lector["IdMarca"];
@@ -40,7 +43,6 @@ namespace negocio
                     aux.Precio = (decimal)accesoDB.Lector["Precio"];
 
                     lista.Add(aux);
-
                 }
                 return lista;
             }
@@ -54,7 +56,7 @@ namespace negocio
                 accesoDB.Closeconnection();
             }
 
-        }        
+        }
         public List<Articulos> filtrar(string campo, string criterio, string filtro)
         {
             List<Articulos> lista = new List<Articulos>();
@@ -201,7 +203,7 @@ namespace negocio
             {
                 throw ex;
             }
-            
+
         }
         public void editar(Articulos nuevo)
         {
@@ -256,6 +258,8 @@ namespace negocio
                     aux.Descripcion = (string)accesoDatos.Lector["Descripcion"];
                     if (!(accesoDatos.Lector["ImagenUrl"] is DBNull))
                         aux.ImagenUrl = (string)accesoDatos.Lector["ImagenUrl"];
+                    else
+                        aux.ImagenUrl = "https://st3.depositphotos.com/6672868/13701/v/450/depositphotos_137014128-stock-illustration-user-profile-icon.jpg";
                     aux.Precio = (decimal)accesoDatos.Lector["Precio"];
 
                     lista.Add(aux);

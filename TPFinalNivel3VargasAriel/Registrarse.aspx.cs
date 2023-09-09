@@ -25,7 +25,7 @@ namespace TPFinalNivel3VargasAriel
                 EmailService emailService = new EmailService();
                 user.Email = txtEmail.Text;
                 user.Password = txtPassword.Text;
-                user.Id = usuarios.Registrarse(user);
+                user.Id = usuarios.Registrarse(user);//aca toma el id que genera en BD
                 Session.Add("usuario", user);
 
                 emailService.armarCorreo(user.Email, "Bienvenido a Maxitienda", "Hola te damos la bienvenida a Maxitienda. ¿Que esperas para gastar todo tu sueldo en nuestros productos?");

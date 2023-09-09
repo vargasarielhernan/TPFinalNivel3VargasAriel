@@ -28,6 +28,20 @@ namespace TPFinalNivel3VargasAriel
         protected void chkAvanzado_CheckedChanged(object sender, EventArgs e)
         {
             txtFiltro.Enabled = !chkAvanzado.Checked;
+            ddlCriterio.Items.Clear();
+            if (ddlCampo.SelectedItem.ToString() == "Precio")
+            {
+                ddlCriterio.Items.Add("Igual a");
+                ddlCriterio.Items.Add("Mayor a");
+                ddlCriterio.Items.Add("Menor a");
+            }
+            else
+            {
+                ddlCriterio.Items.Clear();
+                ddlCriterio.Items.Add("Contiene");
+                ddlCriterio.Items.Add("Comienza con");
+                ddlCriterio.Items.Add("Termina con");
+            }
         }
 
         protected void ddlCampo_SelectedIndexChanged(object sender, EventArgs e)
@@ -52,9 +66,9 @@ namespace TPFinalNivel3VargasAriel
         {
             try
             {
-                Page.Validate();
-                if (!Page.IsValid)
-                    return;
+                //Page.Validate();
+                //if (!Page.IsValid)
+                //    return;
                 ListaArticulos lista = new ListaArticulos();
                 String Criterio = ddlCriterio.SelectedItem.ToString();
                 dgvProductos.DataSource = lista.filtrar(ddlCampo.SelectedItem.ToString(), Criterio, txtFiltroAvanzado.Text);

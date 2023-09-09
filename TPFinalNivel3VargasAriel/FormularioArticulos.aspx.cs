@@ -18,6 +18,10 @@ namespace TPFinalNivel3VargasAriel
             ConfirmaEliminacion = false;
             try
             {
+                if (Request.QueryString["id"] == null && !Seguridad.esAdmin(Session["usuario"]))
+                {
+                    Response.Redirect("Default.aspx", false);
+                }
                 if (!IsPostBack)
                 {
                     ListaCategoria negocio = new ListaCategoria();
@@ -68,7 +72,7 @@ namespace TPFinalNivel3VargasAriel
                         ddlMarca.SelectedValue = aux.Marca.Id.ToString();
                         ImagenUrl.ImageUrl = txturlImagen.Text;
 
-                        if (!(Seguridad.esAdmin(Session["usuario"]))){
+                        if (!(Seguridad.esAdmin(Session["usuario"])) || (Seguridad.sesionActiva(Session["usuario"])==false)){
                             txtCodigo.Enabled= false;
                             txtNombre.Enabled= false;
                             txtDescripcion.Enabled= false;

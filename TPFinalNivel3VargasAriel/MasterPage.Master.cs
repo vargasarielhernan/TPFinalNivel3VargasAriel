@@ -14,7 +14,7 @@ namespace TPFinalNivel3VargasAriel
         protected void Page_Load(object sender, EventArgs e)
         {
             ImagenAvatar.ImageUrl = "https://st3.depositphotos.com/6672868/13701/v/450/depositphotos_137014128-stock-illustration-user-profile-icon.jpg";
-            if (Page is Perfil || Page is FormularioArticulos || Page is Favoritos)
+            if (Page is Perfil || Page is Favoritos)
             {
                 if (!Seguridad.sesionActiva(Session["usuario"]))
                     Response.Redirect("Login.aspx", false);
