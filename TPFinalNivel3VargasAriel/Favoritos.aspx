@@ -4,6 +4,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="container-fluid">
+        <h1>Favoritos destacados</h1>
         <div class="row row-cols-1 row-cols-md-3 g-4">
             <asp:Repeater ID="RepetidorFav" runat="server">
                 <ItemTemplate>

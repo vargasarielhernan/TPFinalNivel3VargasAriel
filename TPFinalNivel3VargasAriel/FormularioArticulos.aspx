@@ -5,6 +5,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <asp:ScriptManager ID="ScriptManager" runat="server" />
     <div class="container-fluid">
+        <h1>Detalles</h1>
         <div class="row">
             <div class="col-6">
                 <div class="mb-3">
