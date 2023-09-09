@@ -3,15 +3,17 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <div class="row row-cols-1 row-cols-md-3 g-4">
-        <asp:Repeater ID="Repetidor" runat="server">
-            <ItemTemplate>
-                <div class="col">
-                    <div class="card" style="width: 18rem;">
-                        <img src="<%#Eval("ImagenUrl")%>" class="card-img-top" style="height: 22rem; object-fit: cover;" alt="...">
-                        <div class="card-body">
-                            <h5 class="card-title"><%#Eval("Nombre")%>
-                                <asp:LinkButton CommandArgument='<%#Eval("Id")%>' CommandName="ArticuloId" OnClick="agregarFav" ID="agregarFavo" runat="server">
+    <h1 class="text-center">Tienda Maxiprograma C#</h1>
+    <div class="container-fluid">
+        <div class="row row-cols-1 row-cols-md-3 g-4">
+            <asp:Repeater ID="Repetidor" runat="server">
+                <ItemTemplate>
+                    <div class="col">
+                        <div class="card" style="width: 18rem;">
+                            <img src="<%#Eval("ImagenUrl")%>" class="card-img-top" style="height: 22rem; object-fit: cover;" alt="...">
+                            <div class="card-body">
+                                <h5 class="card-title"><%#Eval("Nombre")%>
+                                    <asp:LinkButton CommandArgument='<%#Eval("Id")%>' CommandName="ArticuloId" OnClick="agregarFav" ID="agregarFavo" runat="server">
                                     <%if (rellenoCo())
                                         {%>
                                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-heart" viewBox="0 0 16 16">
@@ -24,14 +26,15 @@
                                         <path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z" />
                                     </svg>
                                     <%}%>
-                                </asp:LinkButton>
-                            </h5>
-                            <p class="card-text"><%#Eval("Descripcion") %></p>
-                            <asp:Button ID="btnDetallesCard" CommandArgument='<%#Eval("Id")%>' CommandName="dId" Text="Detalles" CssClass="btn btn-primary" runat="server" OnClick="btnDetalles"/>
+                                    </asp:LinkButton>
+                                </h5>
+                                <p class="card-text"><%#Eval("Descripcion") %></p>
+                                <asp:Button ID="btnDetallesCard" CommandArgument='<%#Eval("Id")%>' CommandName="dId" Text="Detalles" CssClass="btn btn-primary" runat="server" OnClick="btnDetalles" />
+                            </div>
                         </div>
                     </div>
-                </div>
-            </ItemTemplate>
-        </asp:Repeater>
+                </ItemTemplate>
+            </asp:Repeater>
+        </div>
     </div>
 </asp:Content>
