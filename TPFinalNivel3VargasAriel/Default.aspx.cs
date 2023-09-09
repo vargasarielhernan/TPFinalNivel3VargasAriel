@@ -38,7 +38,6 @@ namespace TPFinalNivel3VargasAriel
                 if (favs.existeFav(favorito))
                 {
                     favs.eliminarFav(IdFav);
-                    rellenoCo();
                 }
                 else
                 {
@@ -46,10 +45,6 @@ namespace TPFinalNivel3VargasAriel
 
                 }
             }
-        }
-        protected bool rellenoCo()
-        {
-            return true;
         }
 
         protected void btnDetalles(object sender, EventArgs e)

@@ -18,7 +18,6 @@
                     </div>
                     <asp:Button Text="Registrarse" CssClass="btn btn-primary" ID="btnRegistrarse" runat="server" OnClick="btnRegistrarse_Click" />
                     <asp:Button Text="Cancelar" CssClass="btn btn-danger" ID="btnCancelar" runat="server" />
-
                 </form>
             </div>
         </div>

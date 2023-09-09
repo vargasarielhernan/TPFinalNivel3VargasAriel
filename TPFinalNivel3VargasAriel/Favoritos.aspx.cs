@@ -50,7 +50,7 @@ namespace TPFinalNivel3VargasAriel
             }
         }
 
-        protected bool rellenoCora()
+        public bool rellenoCora()
         {
             return false;
         }
