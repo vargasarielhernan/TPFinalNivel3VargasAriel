@@ -36,7 +36,7 @@ namespace TPFinalNivel3VargasAriel
                 Page.Validate();
                 if(!Page.IsValid)
                     return;
-                string ruta = Server.MapPath("./images/");
+                string ruta = Server.MapPath(ConfigurationManager.AppSettings["rutaImagen"]);
                 Usuarios usuario = new Usuarios();
                 Users user = (Users)Session["usuario"];
                 txtImagenPerfil.PostedFile.SaveAs(ruta + "perfil-"+user.Id+".jpg");
