@@ -49,7 +49,7 @@ namespace TPFinalNivel3VargasAriel
                 usuario.ActualizarUser(user);
 
                 Image img = (Image)Master.FindControl("ImagenAvatar");
-                img.ImageUrl = "~/Images/" + user.UrlImagen;
+                img.ImageUrl = ConfigurationManager.AppSettings["rutaImagen"] + user.UrlImagen;
 
                 Response.Redirect("Default.aspx", false);
             }
